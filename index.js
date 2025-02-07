@@ -9,14 +9,14 @@ let hely = document.getElementById("födiv");
 function betolt(adat){
     let formazotttermek =adat.map(elem => `
         <div class="termek">
-            <img src="">
+            <img src="${elem.image}">
             <h3 class="nev">${elem.name}</h3>
             <p class="leiras">${elem.description}</p>
-            <p class="ar">${elem.price}</p>
+            <p class="ar">${elem.price}VND</p>
             <button onclick="peldany.hozzaad('${elem.name}')">Vásárlás</button>
         </div>`).join("");
 
-        hely.innerHTML+=formazotttermek
+        hely.innerHTML=formazotttermek
 }
 
 class tarolo{
@@ -38,6 +38,17 @@ class tarolo{
                 }
             }
         })
+    }
+
+    megtekintes(){
+        let ujdiv = document.getElementById("ujdiv");
+        let vegosszeg = 0;
+        for(let i =0 ; i<this.items.length;i++){
+            ujdiv.innerHTML+=`<p>${this.items[i].name}, ${this.items[i].price}VND</p>`;
+            vegosszeg+=Number(this.items[i].price)
+
+        }
+        ujdiv.innerHTML+=`<p>Végösszeg:${vegosszeg}</p>`
     }
 }
 
