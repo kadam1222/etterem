@@ -9,11 +9,13 @@ let hely = document.getElementById("födiv");
 function betolt(adat){
     let formazotttermek =adat.map(elem => `
         <div class="termek">
-            <img src="${elem.image}"></img>
+            <img src="${elem.image}">
             <h3 class="nev">${elem.name}</h3>
             <p class="leiras">${elem.description}</p>
             <p class="ar">${elem.price}</p>
             <button>Vásárlás</button>
-        </div>`);
+        </div>`,console.log("asd"))
+        ;
 
+        hely.innerHTML+=formazotttermek
 }
