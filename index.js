@@ -12,7 +12,7 @@ function betolt(adat){
             <img src="${elem.image}">
             <h3 class="nev">${elem.name}</h3>
             <p class="leiras">${elem.description}</p>
-            <p class="ar">${elem.price}VND</p>
+            <p class="ar">${elem.price} VND</p>
             <button onclick="peldany.hozzaad('${elem.name}')">Vásárlás</button>
         </div>`).join("");
 
@@ -41,14 +41,17 @@ class tarolo{
     }
 
     megtekintes(){
+        
         let ujdiv = document.getElementById("ujdiv");
+        ujdiv.innerHTML="";
         let vegosszeg = 0;
         for(let i =0 ; i<this.items.length;i++){
             ujdiv.innerHTML+=`<p>${this.items[i].name}, ${this.items[i].price}VND</p>`;
             vegosszeg+=Number(this.items[i].price)
 
         }
-        ujdiv.innerHTML+=`<p>Végösszeg:${vegosszeg}</p>`
+        ujdiv.innerHTML+=`<p id="vegossz">Végösszeg: ${vegosszeg}</p>`
+        this.items=[];
     }
 }
 
