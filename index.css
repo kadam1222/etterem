@@ -1,0 +1,70 @@
+body{
+    background-image: url('img/kockasabrosz.jpg');
+}
+
+header{
+    text-align: center;
+    background-color:lightcoral;
+    border-radius: 10px;
+}
+
+.termek-container{
+    display: flex;
+  gap: 20px; 
+  justify-content: space-between; 
+  flex-wrap: wrap;
+}
+
+.termek{
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease,box-shadow 0.3 ease;
+    text-align: center;
+    display: inline-block;
+    margin: 50px;
+    
+}
+
+.termek-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.leiras-content{
+    padding: 20px;
+}
+
+.leiras-description{
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.nev-title{
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+}
+
+button{
+    background-color: green;
+    color: white;
+    padding: 10px 3px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.termek-btn:hover{
+    background-color: #0056b3;
+}
+
+.termek:hover{
+    transform: translateY(-5px);
+    box-shadow: 0.5px 16px rgba(0,0,0,0.2);
+}
+
