@@ -46,11 +46,11 @@ class tarolo{
         ujdiv.innerHTML="";
         let vegosszeg = 0;
         for(let i =0 ; i<this.items.length;i++){
-            ujdiv.innerHTML+=`<p>${this.items[i].name}, ${this.items[i].price}VND</p>`;
+            ujdiv.innerHTML+=`<p>${this.items[i].name}, ${this.items[i].price} VND</p>`;
             vegosszeg+=Number(this.items[i].price)
 
         }
-        ujdiv.innerHTML+=`<p id="vegossz">Végösszeg: ${vegosszeg}</p>`
+        ujdiv.innerHTML+=`<p id="vegossz">Végösszeg: ${vegosszeg} VND</p>`
         this.items=[];
     }
 }
