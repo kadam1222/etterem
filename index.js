@@ -19,6 +19,9 @@ function betolt(adat){
         hely.innerHTML=formazotttermek
 }
 
+var alertdiv = document.getElementById("alert")
+
+
 class tarolo{
     constructor(){
         this.items=[]
@@ -30,11 +33,20 @@ class tarolo{
         .then(data => {
             const termek = data.find(item => item.name ===adat);
             if(termek){
-                console.log("asd")
                 const benne = this.items.some(item => item.name === adat)
                 if(!benne){
                     this.items.push(termek)
                     console.log(this.items)
+                    alertdiv.style.textAlign = "center"
+                    alertdiv.style.width = "300px";
+                    alertdiv.style.height = "30px;"
+                    alertdiv.style.backgroundColor = "#fff";
+                    alertdiv.style.border= "1px solid black";
+                    alertdiv.innerHTML="Sikeresen hozzáadta a kosárhoz!"
+                    setTimeout(()=>{
+                        alertdiv.innerHTML="";
+                        alertdiv.style.border ="none"
+                    },1500)
                 }
             }
         })
@@ -56,3 +68,4 @@ class tarolo{
 }
 
 const peldany = new tarolo()
+
