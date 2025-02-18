@@ -35,8 +35,8 @@ class tarolo{
             if(termek){
                 const benne = this.items.some(item => item.name === adat)
                 if(!benne){
-                    this.items.push(termek)
-                    console.log(this.items)
+                    this.items.push({...termek, quantity:1})
+                    
                     alertdiv.style.textAlign = "center"
                     alertdiv.style.width = "300px";
                     alertdiv.style.height = "30px;"
@@ -47,6 +47,11 @@ class tarolo{
                         alertdiv.innerHTML="";
                         alertdiv.style.border ="none"
                     },1500)
+                    let gomb = document.createElement("button");
+                    gomb.innerText="Törlés"
+                    gomb.addEventListener('click',function(){
+                        const talal = this.items.find(item => item.name)
+                    })
                 }
             }
         })
@@ -57,15 +62,35 @@ class tarolo{
         let ujdiv = document.getElementById("ujdiv");
         ujdiv.innerHTML="";
         let vegosszeg = 0;
-        for(let i =0 ; i<this.items.length;i++){
-            ujdiv.innerHTML+=`<p>${this.items[i].name}, ${this.items[i].price} VND</p>`;
-            vegosszeg+=Number(this.items[i].price)
-
-        }
+        this.items.forEach((item, i) => {
+            ujdiv.innerHTML += `
+                <p>${item.name}, ${item.price} VND</p>
+                Mennyiség:
+                <button onclick="peldany.updateQuantity('${item.name}', 1)">+</button>
+                <span id="menny${i}">${item.quantity}</span>
+                <button onclick="peldany.updateQuantity('${item.name}', -1)">-</button>
+                <button onclick="peldany.torol('${item.name}')">Törlés</button>
+            `;
+            vegosszeg += Number(item.price) * item.quantity;
+        });
         ujdiv.innerHTML+=`<p id="vegossz">Végösszeg: ${vegosszeg} VND</p>`
-        this.items=[];
+        
     }
+
+    torol(nev){
+        
+        this.items = this.items.filter(item => item.name !== nev)
+        this.megtekintes();
+    }
+    updateQuantity(nev, valtoztat) {
+        const item = this.items.find(i => i.name === nev);
+        if(item) {
+            item.quantity = Math.max(1, item.quantity + valtoztat);
+        }
+        this.megtekintes();
+    }
+    
 }
 
-const peldany = new tarolo()
 
+const peldany = new tarolo()
